@@ -1,0 +1,17 @@
+--- # Fetch module Example
+- hosts: test2_hosts
+  user: c1615535 
+  sudo: yes
+#  become_user: gbid
+  connection: ssh
+  #gather_facts: yes
+  ignore_errors: true
+  tasks:
+    - name: copy remote hosts file to control server
+      fetch: src=/tmp/fetch.yaml dest=~/jobs/prefix-{{inventory_hostname}} flat=yes
+      async: 1000
+      poll: 5
+    - name: copy this file to host
+      copy:
+         src: /etc/ansible/fetch.yaml
+         dest: /ngs/app/gbid/fetch.yaml
