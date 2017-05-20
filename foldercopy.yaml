@@ -1,7 +1,7 @@
 - hosts: test2_hosts
-#  user: c1615535
+#  user: xxxxxxx
 #  become: yes
-#  become_user: gbid
+#  become_user: xyz
 #  sudo: yes
   ignore_errors: True
   gather_facts: no
