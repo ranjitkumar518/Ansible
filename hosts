@@ -1,11 +1,7 @@
-[antis]
-antis.corp.apple.com ansible_ssh_user=c1615535
-#ansible_ssh_pass=May@2017
+[dev_hosts]
+xxx1.corp.xyz.com ansible_ssh_user=xxxxxxx
 [test1_hosts]
-ma-bobjd-lapp03.corp.apple.com ansible_ssh_user=c1615535
-#ansible_shh_pass=Raj@143567
-#17.169.65.252
+xxx2.corp.apple.com ansible_ssh_user=xxxxxx
 [test2_hosts]
-rn2-bobjd-lapp27.rno.apple.com ansible_ssh_user=c1615535
-# ansible_ssh_pass=Raj@143567
-#17.99.197.40
+xxx3-corp.xyz.com ansible_ssh_user=xxxxxxx
+
