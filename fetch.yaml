@@ -1,8 +1,8 @@
 --- # Fetch module Example
 - hosts: test2_hosts
-  user: c1615535 
+  user: xxxxxx
   sudo: yes
-#  become_user: gbid
+#  become_user: xyz
   connection: ssh
   #gather_facts: yes
   ignore_errors: true
