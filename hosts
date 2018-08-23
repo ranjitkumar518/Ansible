@@ -1,7 +1,7 @@
 [dev_hosts]
 xxx1.corp.xyz.com ansible_ssh_user=xxxxxxx
 [test1_hosts]
-xxx2.corp.apple.com ansible_ssh_user=xxxxxx
+xxx2.corp.abc.com ansible_ssh_user=xxxxxx
 [test2_hosts]
 xxx3-corp.xyz.com ansible_ssh_user=xxxxxxx
 
