@@ -1,7 +1,16 @@
-- lineinfile:
-    path: /etc/hosts
-    regexp: '^127\.0\.0\.1'
-    line: '127.0.0.1 localhost'
-    owner: {{ user }}
-    group: {{ user }}
-    mode: 0644
+--- # Lineinfile module Example
+- hosts: test2_hosts
+  user: {{ a_user }}
+  sudo: yes
+  become_user: {{ b_user }}
+  connection: ssh
+  ignore_errors: false
+  tasks:
+    - name: copy remote hosts file to control server
+      lineinfile:
+       path: /etc/hosts
+       regexp: '^127\.0\.0\.1'
+       line: '127.0.0.1 localhost'
+       owner: {{ user }}
+       group: {{ user }}
+       mode: 0644
