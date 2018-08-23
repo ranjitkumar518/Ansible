@@ -6,11 +6,18 @@
   connection: ssh
   ignore_errors: false
   tasks:
-    - name: copy remote hosts file to control server
+    - name: Update a line in a file with regex match
       lineinfile:
-       path: /etc/hosts
-       regexp: '^127\.0\.0\.1'
-       line: '127.0.0.1 localhost'
-       owner: root
-       group: root
-       mode: 0644
+        path: /etc/hosts
+        regexp: '^127\.0\.0\.1'
+        line: '127.0.0.1 localhost'
+        owner: root
+        group: root
+        mode: 0644
+       
+    - name: Update in a next line in a file where regex matches
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen '
+        insertafter: '^#Listen '
+        line: 'Listen 8080'
