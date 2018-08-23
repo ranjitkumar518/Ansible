@@ -1,0 +1,36 @@
+- name: To pull image from a docker registry
+  docker_image:
+    name: redhat.com/rhel7
+    
+- name: Tag and push to docker hub
+  docker_image:
+    name: redhat.com/rhel7
+    repository: rredhat/myimage
+    tag: 7.0
+    push: yes
+
+- name: Tag image and push to local registry
+  docker_image:
+     name: RHEL
+     repository: localhost:5000/RHEL
+     tag: 7
+     push: yes
+
+- name: Remove image from Docker registry
+  docker_image:
+    state: absent
+    name: registry.ansible.com/redhat/rhel7
+    tag: v1
+
+- name: Build an image and push it to a private registry
+  docker_image:
+    path: ./rhel7
+    name: registry.ansible.com/redhat/rhel7
+    tag: v1
+    push: yes
+
+- name: Archive Docker image
+  docker_image:
+    name: registry.ansible.com/redhat/rhel7
+    tag: v1
+    archive_path: my_redhat.tar
