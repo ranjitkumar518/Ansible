@@ -1,8 +1,8 @@
 - hosts: test2_hosts
 #  user: xxxxxxx
-#  become: yes
+  become: yes
 #  become_user: xyz
-#  sudo: yes
+  sudo: yes
   ignore_errors: True
   gather_facts: no
   tasks:
