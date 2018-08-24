@@ -4,18 +4,18 @@ xxx1.corp.xyz.com ansible_ssh_user=xxxxxxx ansible_user=app
 xxx2.corp.abc.com ansible_ssh_user=xxxxxx ansible_user=app
 [test2_hosts]
 xxx3-corp.xyz.com ansible_ssh_user=xxxxxxx ansible_user=app
-[app_servers]
+[App_servers]
 # Assigning Variables values to each host
 www[01:50].example.com http_port=80 maxRequestsPerChild=808
 [DB_servers]
 db-[a:n].example.com  http_port=443 maxRequestsPerChild=910
 
 # Variable values to Group of hosts 
-[atlanta:vars]
+[App_servers:vars]
 ntp_server=ntp.atlanta.example.com
 proxy=proxy.atlanta.example.com
 
 # Child Groups
 [Group:children]
-app_servers
+App_servers
 DB_servers
