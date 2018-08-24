@@ -8,7 +8,7 @@
   tasks:
    - name: copy folder from test1_hosts to test2_hosts
      synchronize:
-       src=/ngs/app/gbid/java-1.7.0.rpm
+       src= {{ src_path }}/java-1.7.0.rpm
        dest=/tmp/java-1.7.0.rpm
       # mode=pull
      delegate_to: test1_hosts
