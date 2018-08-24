@@ -21,7 +21,7 @@
     docker_image:
       name: RHEL
       repository: localhost:5000/RHEL
-      tag: 7
+      tag: 7.0
       push: yes
 
   - name: Remove image from Docker registry
