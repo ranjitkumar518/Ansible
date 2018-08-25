@@ -1,0 +1,19 @@
+- hosts: test2_hosts
+  user: xxxxxx
+  sudo: yes
+#  become_user: xyz
+  connection: ssh
+  #gather_facts: yes
+  ignore_errors: true
+  tasks:
+    - name: stop nginx service 
+      service: 
+         name: nginx
+         state: stopped 
+         
+# Ansible adhoc commands for service module         
+
+# ansible test2_hosts -m service -a "name=nginx state=stopped"         
+# ansible test2_hosts -m service -a "name=nginx state=started"
+# ansible test2_hosts -m service -a "name=nginx state=restarted"
+# ansible test2_hosts -m service -a "name=nginx state=reloaded"
