@@ -1,7 +1,7 @@
 - hosts: test2_hosts
   user: xxxxxx
   sudo: yes
-#  become_user: xyz
+  #become_user: xyz
   connection: ssh
   #gather_facts: yes
   ignore_errors: true
