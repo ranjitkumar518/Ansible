@@ -23,5 +23,5 @@
     - stat: path=/path/to/directory
       register: p
 # Debug to print if directory exists
-- debug: msg="Path exists and is a directory"
+    - debug: msg="Path exists and is a directory"
       when: p.stat.isdir is defined and p.stat.isdir
