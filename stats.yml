@@ -1,11 +1,18 @@
-tasks:
-  - name: Check weather file exists or not in User_Home
-    stat:
-      path: $HOME/abc.txt
-    register: stat_output
+--- # Stats module Example
+- hosts: test2_hosts
+  user: xxxxxx
+  sudo: yes
+#  become_user: xyz
+  connection: ssh
+  ignore_errors: true
+  tasks:
+    - name: Check weather file exists or not in User_Home
+      stat:
+        path: $HOME/abc.txt
+      register: stat_output
 
-  - name: Create a file, if file doesn't exist already
-    file:
-      path: $HOME/abc.txt
-      state: touch
-    when: stat_output.stat.exists == False 
+    - name: Create a file, if file doesn't exist already
+      file:
+        path: $HOME/abc.txt
+        state: touch
+      when: stat_output.stat.exists == False 
