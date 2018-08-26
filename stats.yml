@@ -15,4 +15,7 @@
       file:
         path: $HOME/abc.txt
         state: touch
+        owner: xxxxx
+        group: xxxxx
+        mode: 0644
       when: stat_output.stat.exists == False 
