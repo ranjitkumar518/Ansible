@@ -20,7 +20,7 @@
         mode: 0644
       when: stat_output.stat.exists == False 
 # Check the existance of a directory
-    - stat: path=/path/to/directory
+    - stat: path=$HOME/abcd
       register: p
 # Debug to print if directory exists
     - debug: msg="Path exists and is a directory"
