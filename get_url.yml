@@ -16,7 +16,7 @@
     - name: Download file and force basic authentication
       get_url:
         url: http://abcd.com/path/abc.yml
-        dest: /etc/foo.conf
+        dest: /etc/abc.yml
         force_basic_auth: yes
 
     - name: Download file with custom HTTP headers information
