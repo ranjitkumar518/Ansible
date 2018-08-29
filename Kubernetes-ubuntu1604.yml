@@ -1,0 +1,71 @@
+#
+# This playbook installs kubernetes on the local host for development purposes
+# only. This assumes there is a local docker daemon running, and that docker
+# doesn't use the latest "overlay2" filesystem driver (which kubernetes doesn't
+# support).
+#
+# Should work on Ubuntu 16.04, in theory, and was tested on 17.04.
+#
+
+
+- hosts: all
+  connection: local
+
+  tasks:
+
+  - name: check if kubernetes is installed
+    stat: path=/etc/kubernetes/admin.conf
+    register: admin_conf
+
+  - apt_key:
+      url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+      state: present
+    become: yes
+    when: not admin_conf.stat.exists
+
+  - apt_repository:
+      repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+    become: yes
+    when: not admin_conf.stat.exists
+
+  - apt:
+      name: "{{item}}"
+    become: yes
+    with_items:
+      - kubelet
+      - kubeadm
+      - kubectl
+      - kubernetes-cni
+    when: not admin_conf.stat.exists
+
+  - lineinfile:
+      dest: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+      state: absent
+      regexp: '^Environment="KUBELET_NETWORK_ARGS'
+    become: yes
+    when: not admin_conf.stat.exists
+
+  - command: kubeadm init
+    become: yes
+    when: not admin_conf.stat.exists
+
+  - file:
+      path: "/{{ansible_env.HOME}}/.kube"
+      state: directory
+      mode: 0700
+  - command: cp {{ansible_env.HOME}}/.kube/config {{ansible_env.HOME}}/.kube/config.backup
+    ignore_errors: yes
+  - command: cp /etc/kubernetes/admin.conf {{ansible_env.HOME}}/.kube/config
+    become: yes
+  - file: path="{{ansible_env.HOME}}/.kube/config" owner="{{ansible_env.USER}}"
+    become: yes
+
+  - command: kubectl taint nodes --all node-role.kubernetes.io/master-
+    ignore_errors: yes
+
+  # https://github.com/kubernetes/kubernetes/issues/45828
+  - command: kubectl -n kube-system create configmap kube-dns  --from-literal=upstreamNameservers='["dns server ip here"]'
+    ignore_errors: yes
+  - command: kubectl -n kube-system edit configmap kube-dns
+  - command: kubectl -n kube-system delete pod -l k8s-app=kube-dns
