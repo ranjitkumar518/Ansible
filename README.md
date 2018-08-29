@@ -11,3 +11,6 @@ ansible setup hostname
 ansible test2_hosts -m service -a "name=nginx state=started"
 # Shell command to get java version
 java -version 2>&1 | awk -F'"' 'NR==1{ print $2 }'
+
+# To Install Kubernetes on a local host
+ansinle-playbook Kubernetes-ubuntu1604.yml
