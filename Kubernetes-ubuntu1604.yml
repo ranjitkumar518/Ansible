@@ -4,7 +4,7 @@
 # doesn't use the latest "overlay2" filesystem driver (which kubernetes doesn't
 # support).
 #
-# Should work on Ubuntu 16.04, in theory, and was tested on 17.04.
+# Should work only on Ubuntu 16.04, in theory, and was tested on 17.04.
 #
 
 
