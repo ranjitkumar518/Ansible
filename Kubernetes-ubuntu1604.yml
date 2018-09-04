@@ -46,7 +46,8 @@
     become: yes
     when: not admin_conf.stat.exists
 
-  - command: kubeadm init
+  - name: Initialize kube admin on the master node
+    command: kubeadm init
     become: yes
     when: not admin_conf.stat.exists
 
