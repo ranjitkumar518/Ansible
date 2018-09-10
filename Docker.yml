@@ -1,6 +1,6 @@
 --- # Docker Image module Example
 - hosts: localhost
-  user: xxxxxx
+  user: {{ user_name }}
   sudo: yes
 #  become_user: xyz
   connection: ssh
