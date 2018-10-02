@@ -9,7 +9,7 @@ ansible all -m ping
 ansible setup hostname
 
 # Command to exclude hosts form playbook execution
-ansible-playbook --limit '!hoost1' Playbook.yml
+ansible-playbook --limit '!hoost1' Playbook.yml  (OR)
 ansible-playbook --limit '!hoost1:!host2' Playbook.yml
 
 # To ensure a service was started
