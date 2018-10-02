@@ -7,6 +7,10 @@ Ansible Adhoc Commands:
 ansible all -m ping
 # To get the facts about a host
 ansible setup hostname
+
+# Command to exclude hosts form playbook execution
+ansible-playbook --limit '!hoost1:!host2' yourPlaybook.yml
+
 # To ensure a service was started
 ansible test2_hosts -m service -a "name=nginx state=started"
 # Shell command to get java version
