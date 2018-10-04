@@ -15,6 +15,9 @@ ansible-playbook --limit '!hoost1:!host2' Playbook.yml
 # TO execute on all hosts except one host
 ansible-playbook Playbook.yml --limit 'all:!host1' 
 
+# To execute on a group except one host 
+ansible-playbook playbooks/PLAYBOOK_NAME.yml --limit 'group1:!host1'
+
 # To ensure a service was started
 ansible test2_hosts -m service -a "name=nginx state=started"
 # Shell command to get java version
