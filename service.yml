@@ -10,6 +10,7 @@
       service: 
          name: nginx
          state: stopped 
+      delegate_to: test3_hosts
          
 # Ansible adhoc commands for service module         
 
