@@ -11,7 +11,8 @@
       fetch: src=/tmp/fetch.yaml dest=~/jobs/prefix-{{inventory_hostname}} flat=yes
       async: 1000
       poll: 5
+      
     - name: copy this file to host
       copy:
          src: /etc/ansible/fetch.yaml
-         dest: /ngs/app/gbid/fetch.yaml
+         dest: $HOME
