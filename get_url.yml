@@ -12,7 +12,8 @@
         url: http://abcd.com/path/abc.yml
         dest: /etc/abc.yml
         mode: 0440
-
+        status: 200
+        
     - name: Download file and force basic authentication
       get_url:
         url: http://abcd.com/path/abc.yml
